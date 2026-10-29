@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#111c33"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="0.6" stop-color="#818cf8"/>
+      <stop offset="1" stop-color="#f472b6"/>
+    </linearGradient>
+    <linearGradient id="band" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f472b6" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#f472b6" stop-opacity="0.04"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#1e2a44" stroke-width="1"/>
+    </pattern>
+    <style>
+      .title { font: 700 64px 'Segoe UI', Ubuntu, 'Helvetica Neue', Arial, sans-serif; fill: #f1f5f9; }
+      .sub   { font: 400 22px 'Segoe UI', Ubuntu, 'Helvetica Neue', Arial, sans-serif; fill: #94a3b8; }
+      .mono  { font: 500 15px 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; fill: #38bdf8; }
+      .tag   { font: 500 13px 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; fill: #64748b; }
+      .draw  { stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: draw 3.2s ease-out forwards; }
+      .fade  { opacity: 0; animation: fade 1s ease-out 2.6s forwards; }
+      .fadein1 { opacity: 0; animation: fade .8s ease-out .2s forwards; }
+      .fadein2 { opacity: 0; animation: fade .8s ease-out .6s forwards; }
+      .fadein3 { opacity: 0; animation: fade .8s ease-out 1s forwards; }
+      .pulse { animation: pulse 2s ease-in-out 3.2s infinite; transform-origin: 1128px 92px; }
+      .blink { animation: blink 1s steps(1) infinite; }
+      @keyframes draw { to { stroke-dashoffset: 0; } }
+      @keyframes fade { to { opacity: 1; } }
+      @keyframes pulse { 0%,100% { r: 6; opacity: 1; } 50% { r: 11; opacity: .45; } }
+      @keyframes blink { 50% { opacity: 0; } }
+    </style>
+  </defs>
+
+  <rect width="1200" height="320" rx="18" fill="url(#bg)"/>
+  <rect width="1200" height="320" rx="18" fill="url(#grid)" opacity="0.6"/>
+
+  <!-- left: who -->
+  <text x="60" y="78" class="mono fadein1">&gt; SELECT * FROM people WHERE name = 'harsha';<tspan class="blink">_</tspan></text>
+  <text x="60" y="158" class="title fadein2">Harsha Manjunath</text>
+  <text x="62" y="200" class="sub fadein3">Data &amp; BI analyst  ·  Master of AI  ·  Christchurch, NZ</text>
+  <text x="62" y="262" class="tag fadein3">forecasting   ·   anomaly detection   ·   SQL pipelines   ·   Power BI   ·   LLM tooling</text>
+
+  <!-- right: a forecast that draws itself -->
+  <g transform="translate(700,40)">
+    <path d="M300 112 C 330 100, 360 70, 428 52 L 428 120 C 380 140, 340 140, 300 132 Z" fill="url(#band)" class="fade"/>
+    <path class="draw" fill="none" stroke="url(#line)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"
+      d="M0 170 L30 150 L55 162 L80 128 L105 140 L130 110 L155 126 L180 96 L205 118 L230 88 L255 104 L280 84 L300 122"/>
+    <path class="fade" fill="none" stroke="#f472b6" stroke-width="3" stroke-dasharray="7 7" stroke-linecap="round"
+      d="M300 122 C 340 112, 380 84, 428 52"/>
+    <line x1="300" y1="20" x2="300" y2="200" stroke="#334155" stroke-dasharray="3 5" class="fade"/>
+    <text x="250" y="16" class="tag fade">today</text>
+    <text x="330" y="16" class="tag fade">forecast</text>
+    <circle cx="428" cy="52" r="6" fill="#f472b6" class="pulse"/>
+  </g>
+</svg>
